@@ -1,0 +1,11 @@
+Kivy==2.1.0
+kivy-deps.angle==0.3.3
+kivy-deps.glew==0.3.1
+kivy-deps.sdl2==0.4.5
+Kivy-Garden==0.1.5
+kivymd==1.1.1
+kivymd-extensions.akivymd==1.2.6
+numpy==1.21.6
+opencv-python==4.7.0.72
+Pillow==9.4.0
+Pygments==2.14.0

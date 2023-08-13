@@ -1,0 +1,668 @@
+<Signup>:
+    name: "signup"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background4.jpg'    
+    MDBoxLayout:      
+        orientation: "vertical"
+        padding: 5
+        spacing: 15
+        Image:
+            size_hint_y: 0.3
+            source: "assets/logo3.png"
+        MDLabel:
+            size_hint_y: 0.1
+            bold: True
+            text: "SignUp"
+            font_size: 22
+            halign: "center"
+        MDTextField:
+            id: tf_username
+            size_hint_y: 0.12
+            mode: "fill"
+            fill_color_normal: (0/255,150/255,136/255,0.4)
+            hint_text: "Username"
+            write_tab: False
+            icon_left: "account"
+            helper_text: "Username can not be empty!"
+            helper_text_mode: "on_error"
+            font_size: 16
+        MDTextField:
+            id: tf_password
+            size_hint_y: 0.12
+            mode: "rectangle"
+            hint_text: "Password"
+            write_tab: False
+            icon_left: "lock"
+            password: True
+            helper_text: "Password can not be empty!"
+            helper_text_mode: "on_error"
+            font_size: 16
+        MDTextField:
+            id: tf_re_password
+            size_hint_y: 0.12
+            mode: "rectangle"
+            hint_text: "Re-Enter Password"
+            write_tab: False
+            icon_left: "lock"
+            helper_text: "Password not matched!"
+            helper_text_mode: "on_error"
+            password: True
+            font_size: 16
+        MDRectangleFlatButton:
+            text: "SignUp"
+            size_hint: (1.0, 0.08)
+            md_bg_color: (0,128/255,128/255,1)
+            text_color: "white"
+            on_release: root.on_signup(tf_username, tf_password, tf_re_password)
+        MDBoxLayout:
+            id: empty
+            size_hint_y: 0.16
+<Login>:
+    name: "login"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background2.jpg'    
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: 5
+        spacing: 15
+        Image:
+            size_hint_y: 0.3
+            source: "assets/logo3.png"
+        MDLabel:
+            size_hint_y: 0.1
+            bold: True
+            text: "Login"
+            font_size: 22
+            halign: "center"
+        MDTextField:
+            id: tf_username
+            size_hint_y: 0.12
+            mode: "rectangle"
+            hint_text: "Username"
+            write_tab: False
+            icon_left: "account"
+            helper_text: "Username can not be empty!"
+            helper_text_mode: "on_error"
+            font_size: 16
+        MDTextField:
+            id: tf_password
+            size_hint_y: 0.12
+            mode: "rectangle"
+            hint_text: "Password"
+            write_tab: False
+            icon_left: "lock"
+            helper_text: "Password can not be empty!"
+            helper_text_mode: "on_error"
+            password: True
+            font_size: 16
+        MDBoxLayout:
+            size_hint_y: 0.1
+            spacing: 5
+            MDRectangleFlatButton:
+                text: "Login"
+                size_hint_x: 1.0
+                md_bg_color: (0,128/255,128/255,1)
+                text_color: "white"
+                on_release: root.on_login(tf_username, tf_password)
+            MDRectangleFlatButton:
+                text: "SignUp"
+                size_hint_x: 1.0
+                md_bg_color: (0,128/255,128/255,1)
+                text_color: "white"
+                on_release: root.on_signup()
+        MDBoxLayout:
+            id: empty
+            size_hint_y: 0.26
+<Settings>:
+    name: "Settings"
+    MDBoxLayout:       
+        orientation: 'vertical'
+        md_bg_color: "white"
+        spacing: 5
+        MDTopAppBar:
+            id: header
+            size_hint_y: 0.1
+            elevation: 0
+            title: "Settings"
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+        MDBoxLayout:
+            orientation: 'vertical'
+            md_bg_color: "white"
+            spacing: 30
+            padding: 5
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.25
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "ACCOUNT"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: "gray"
+                    font_size: 18
+                    halign: "left"
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        id: lbl_username
+                        text: "Admin"
+                        font_size: 14
+                        halign: "left"
+                        size_hint_x: 0.98
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        text: "Basic Settings"
+                        size_hint_x: 0.78
+                        font_size: 14
+                        halign: "left"
+                    MDSwitch:
+                        size_hint_x: 0.2
+                        active: False
+                        on_active: app.open_settings()
+            
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.40
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "PUSH NOTIFICATIONS"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: "gray"
+                    font_size: 18
+                    halign: "left"
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        text: "New Activities"
+                        size_hint_x: 0.78
+                        font_size: 14
+                        halign: "left"
+                    MDSwitch:
+                        size_hint_x: 0.2
+                        active: True
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        text: "Facebook friend joins"
+                        size_hint_x: 0.78
+                        font_size: 14
+                        halign: "left"
+                    MDSwitch:
+                        size_hint_x: 0.2
+                        active: True
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        text: "Friend likes my activity"
+                        size_hint_x: 0.78
+                        font_size: 14
+                        halign: "left"
+                    MDSwitch:
+                        size_hint_x: 0.2
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.15
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "GET HELP"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: "gray"
+                    font_size: 18
+                    halign: "left"
+                MDBoxLayout:
+                    md_bg_color: "#D3D3D3"
+                    MDLabel:
+                        text: ""
+                        size_hint_x: 0.02
+                    MDLabel:
+                        text: "Contact Us"
+                        size_hint_x: 0.78
+                        font_size: 14
+                        halign: "left"
+                    MDIconButton:
+                        icon: "face-man"
+                        size_hint_x: 0.2
+                        on_release: root.load_about_screen()      
+<AboutUs>:
+    name: "about_us"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background.png'     
+    MDBoxLayout:
+        orientation: 'vertical'
+        #md_bg_color: "white"
+        spacing: 5
+        MDTopAppBar:
+            id: header
+            size_hint_y: 0.1
+            elevation: 0
+            title: "About Us"
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+        MDBoxLayout:
+            orientation: 'vertical'
+            #md_bg_color: "white"
+            spacing: 30
+            padding: 5
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.25
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "Who We Are ?"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: (0/255,150/255,136/255,255/255)
+                    font_size: 18
+                    halign: "center"
+                MDBoxLayout:
+                    #line_color: (0.3, 0.3, 0.3, 1)
+                    radius: (12, 12, 12, 12)
+                    md_bg_color: "white"
+                    padding: 15
+                    radius: 12, 46, 12, 46
+                    MDLabel:
+                        size_hint_x: 1.0
+                        halign: 'left'
+                        markup: True
+                        line_height:1.5
+                        text: "[size=12]Our Recycle ME Company, a leading recycling company dedicated to preserving our planet's resources. We strive to make a positive impact on the environment, one recycled item at a time.[/size]"           
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.25
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "Our Mission"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: (0/255,150/255,136/255,255/255)
+                    font_size: 18
+                    halign: "center"
+                MDBoxLayout:
+                    #line_color: (0.3, 0.3, 0.3, 1)
+                    md_bg_color: "white"
+                    padding: 15
+                    radius: 12, 46, 12, 46
+                    MDLabel:
+                        size_hint_x: 1.0
+                        halign: 'left'
+                        markup: True
+                        line_height:1.5
+                        text: "[size=12]Our mission is make it easy for you to monitor and manage the number of items you have recycled. Join our community, let's make a positive impact on the planet! Start tracking your recycling journey today![/size]"
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.25
+                spacing: 1
+                MDLabel:
+                    bold: True
+                    text: "Located At"
+                    size_hint_y: None
+                    height: 30
+                    theme_text_color: "Custom"
+                    text_color: (0/255,150/255,136/255,255/255)
+                    font_size: 18
+                    halign: "left"
+                MDLabel:
+                    size_hint_x: 1.0
+                    halign: 'left'
+                    markup: True
+                    text: "[size=14]Recycle Streen Me House Number 5 [/size]"
+                MDLabel:
+                    size_hint_x: 1.0
+                    halign: 'left'
+                    markup: True
+                    text: "[size=14]Email: recycleme@gmail.com [/size]"
+                MDLabel:
+                    size_hint_x: 1.0
+                    halign: 'left'
+                    markup: True
+                    text: "[size=14]Phone: 2342334442 [/size]"
+
+<Search>
+    name: "search"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        padding: dp(20)
+        pos_hint:{'center_x': 0.5, 'y': 0.85}
+
+        BoxLayout:
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDIconButton:
+                icon: 'arrow-left'
+                on_release: root.on_back()
+
+            MDTextField:
+                id: search_field
+                hint_text: 'Search'
+                on_text: 
+                    root.set_search_result(self.text)
+
+    RecycleView:
+        pos_hint:{'center_x': 0.5, 'center_y': 0.4}
+
+        MDList:
+            id: container
+<Dasboard>:
+    name: "dashboard"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background.png'    
+    MDNavigationLayout:
+        ScreenManager:
+            id: dashboard_screen_manager
+            Screen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        id: top_bar
+                        title: "Recycle ME"
+                        elevation: 0
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+                        
+                    MDBoxLayout:
+                        id: boxes
+                        orientation: "vertical"
+                        spacing: 5
+                        padding: 5
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            md_bg_color: "white"
+                            radius: 12, 12, 12, 12
+                            MDBoxLayout:
+                                md_bg_color: "white"
+                                line_color: 0.3, 0.3, 0.3, 1
+                                radius: 0, 0, 12, 12
+                                size_hint_y: 0.7
+                                spacing: 5
+                                padding: 5
+                                MDLabel:
+                                    size_hint_x: 0.8
+                                    halign: 'left'
+                                    markup: True
+                                    text: "[size=14]Large glass bottle[/size]"
+                                Image:
+                                    size_hint_x: 0.2
+                                    # source: "assets/logo2.png"
+                            MDBoxLayout:
+                                md_bg_color: "blue"
+                                radius: 0, 0, 12, 12
+                                size_hint_y: 0.3
+                                spacing: 5
+                                padding: 5
+                                MDLabel:
+                                    size_hint_x: 0.8
+                                    halign: 'left'
+                                    markup: True
+                                    theme_text_color: "Custom"
+                                    text_color: 1, 1, 1, 1
+                                    text_color: "white"
+                                    text: "[size=14]Glass[/size]"
+                                MDLabel:
+                                    size_hint_x: 0.2
+                                    halign: 'left'
+                                    markup: True
+                                    theme_text_color: "Custom"
+                                    text_color: 1, 1, 1, 1
+                                    text: "[size=14]14.11 oz[/size]"
+                        
+                    MDIconButton:
+                        id: floating_btn
+                        icon: "assets/Add_Button.png"
+                        icon_size: "64sp"
+                        on_release: root.on_floating_btn()
+                        elevation_normal: 12
+                        pos_hint: {'x': .4, 'y':.05}
+        MDNavigationDrawer:
+            id: nav_drawer
+            MDBoxLayout:
+                id: nav_body
+                orientation: "vertical"
+                spacing: 2
+                padding: 2
+                size_hint: (1,1)
+                DrawerList:
+                    id: md_list
+                    size_hint_y: 0.5
+                    MDList:
+                        OneLineIconListItem:
+                            text: "Recycle ME"
+                            on_release: root.left_menu_dashboard()
+                                
+                        OneLineIconListItem:
+                            text: "Collection Record"
+                            on_release: root.left_menu_recyclable_items()                        
+
+                        OneLineIconListItem:
+                            text: "Statistics"
+                            on_release: root.left_menu_statistics()                        
+
+                        OneLineIconListItem:
+                            text: "Calendar"
+                            # text: "Search"
+                            on_release: root.left_menu_search()                        
+
+                        OneLineIconListItem:
+                            # text: "Settings"
+                            text: "Information"
+                            on_release: root.left_menu_settings()                        
+                        OneLineIconListItem:
+                            text: "About Us"
+                            on_release: root.left_menu_about()                        
+                        
+                        OneLineIconListItem:
+                            text: "Logout"
+                            on_release: root.left_menu_logout()                        
+                MDBoxLayout:
+                    size_hint_y: 0.5
+<RecyclableItems>:
+    name: "recyclable_items"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background.png'    
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDTopAppBar:
+                        title: "Recycle ME"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+                        right_action_items: [["magnify", lambda x: root.magnifier()]]
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: 5
+                        padding: 5
+                        MDBoxLayout:
+                            radius: 12, 46, 12, 46
+                            md_bg_color: app.theme_cls.primary_color
+                            Image:
+                                size_hint_x: 0.2
+                                source: "assets/logo.png"
+                            MDLabel:
+                                size_hint_x: 0.8
+                                halign: 'left'
+                                markup: True
+                                text: "[size=14]Do you collect a lot of plastic shopping bags from the grocery stores ? You can usually bring them back to the same store for recycling.[/size]"
+                        MDBoxLayout:
+                            radius: 12, 12, 12, 12
+                            md_bg_color: app.theme_cls.primary_color
+                            Image:
+                                size_hint_x: 0.2
+                                source: "assets/logo.png"
+                            MDLabel:
+                                size_hint_x: 0.8
+                                halign: 'left'
+                                markup: True
+                                text: "[size=14]Total recycled: 10.93oz. You are most likely to recycle Glass.[/size]"
+                        MDBoxLayout:
+                            line_color: 0.3, 0.3, 0.3, 1
+                            radius: 12, 12, 12, 12
+                            md_bg_color: "white"
+                            Image:
+                                size_hint_x: 0.2
+                                source: "assets/logo.png"
+                            MDLabel:
+                                size_hint_x: 0.8
+                                halign: 'left'
+                                markup: True
+                                text: "[size=14]Your recycling saved 0.45 kWh of energy.[/size]"
+                        MDBoxLayout:
+                            line_color: 0.3, 0.3, 0.3, 1
+                            radius: 12, 40, 12, 40
+                            md_bg_color: "white"
+                            Image:
+                                size_hint_x: 0.2
+                                source: "assets/logo.png"
+                            MDLabel:
+                                size_hint_x: 0.8
+                                halign: 'left'
+                                markup: True
+                                text: "[size=14]Less trees need to be cut down when more paper products are recycled. Recycle ME will try to estimate amount of trees you have saved over time.[/size]"
+                        
+                    MDFloatingActionButton:
+                        icon: 'plus-thick'
+                        on_release: root.add_recyclable_item()
+                        elevation_normal: 12
+                        pos_hint: {'x': .8, 'y':.05}
+<CameraScreen>:
+    name: "camera_screen"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background.png'    
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: 5
+        MDTopAppBar:
+            id: header
+            size_hint_y: 0.1
+            title: "Take Photo"
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+        Camera:
+            id: camera
+            size_hint_y: 0.7
+            resolution: (640, 480)
+            play: False
+        MDIconButton:
+            icon: "camera-control"
+            size_hint_y: 0.2
+            size_hint_x: 1
+            on_press: root.capture()
+
+<AddRecyclableItem>:
+    name: "add_recyclable_item"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background.png'    
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            id: header
+            title: "Add Recyclable Item"
+            left_action_items: [["arrow-left", lambda x: root.back()]]
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: 5
+            spacing: 10
+            MDTextField:
+                id: item_name
+                size_hint_y: 0.2
+                mode: "rectangle"
+                hint_text: "Item Name"
+                write_tab: False
+                helper_text: "Item name can not be empty!"
+                helper_text_mode: "on_error"
+                font_size: 18
+    
+            MDTextField:
+                id: weight
+                size_hint_y: 0.2
+                mode: "rectangle"
+                hint_text: "Energy Weight(in oz)..."
+                write_tab: False
+                helper_text: "Invalid weight value!"
+                helper_text_mode: "on_error"
+                font_size: 18
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.2
+                MDDropDownItem:
+                    id: drop_item
+                    text: 'Recyclable Type'
+                    on_release: root.menu.open()
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.2
+                MDLabel:
+                    id: image_path
+                    text_size: self.size
+                    halign: "left"
+                    valign: "bottom"
+                    text: "Take Photo:"
+                    size_hint_x: 0.3
+                MDIconButton:
+                    icon: 'camera'
+                    size_hint_x: 0.7
+                    on_release: root.show_camera_screen()
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.2
+                MDRaisedButton:
+                    text: "SAVE"
+                    on_release: (root.on_save(item_name, weight))
+                MDFlatButton:
+                    text: 'CANCEL'
+                    on_release: root.back()
+            
+            MDBoxLayout:
+                size_hint_y: 0.2
+
+
